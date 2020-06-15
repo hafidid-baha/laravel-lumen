@@ -21,4 +21,16 @@ class ProductController extends Controller
         $products = Product::all();
         return response()->json($products);
     }
+
+    // create function allow ass to create new product
+    public function create(Request $request){
+        $product = new Product();
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+        
+        // call the save function to save the product to the database
+        $product->save();
+        return response()->json($product);
+    }
 }
