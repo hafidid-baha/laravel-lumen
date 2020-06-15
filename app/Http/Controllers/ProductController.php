@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
+
 class ProductController extends Controller
 {
     /**
@@ -14,5 +16,9 @@ class ProductController extends Controller
         //
     }
 
-    //
+    // index function must return all the products
+    public function index(){
+        $products = Product::all();
+        return response()->json($products);
+    }
 }
