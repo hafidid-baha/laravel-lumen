@@ -37,6 +37,9 @@ class ProductController extends Controller
     // add show function to show single item
     public function show($id){
         $product = Product::find($id);
+        if($product == null){
+            return response()->json("Product Item Not Found");    
+        }
         return response()->json($product);
     }
 
@@ -44,6 +47,10 @@ class ProductController extends Controller
     public function update(Request $request,$id){
         // get the prodcut from database
         $product = Product::find($id);
+
+        if($product == null){
+            return response()->json("Product Item Not Found");    
+        }
 
         // update the product item
         $product->name = $request->input('name');
@@ -59,6 +66,10 @@ class ProductController extends Controller
     public function destroy($id){
         // get the product from db
         $product = Product::find($id);
+
+        if($product == null){
+            return response()->json("Product Item Not Found");    
+        }
         //delete the product
         $product->delete();
         return response()->json("product removed successfully");
