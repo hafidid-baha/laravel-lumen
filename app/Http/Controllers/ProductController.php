@@ -34,6 +34,12 @@ class ProductController extends Controller
         return response()->json($product);
     }
 
+    // add show function to show single item
+    public function show($id){
+        $product = Product::find($id);
+        return response()->json($product);
+    }
+
     // update function to update the selected product info
     public function update(Request $request,$id){
         // get the prodcut from database
