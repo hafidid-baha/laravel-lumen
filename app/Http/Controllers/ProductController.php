@@ -33,4 +33,20 @@ class ProductController extends Controller
         $product->save();
         return response()->json($product);
     }
+
+    // update function to update the selected product info
+    public function update(Request $request,$id){
+        // get the prodcut from database
+        $product = Product::find($id);
+
+        // update the product item
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
+
+        // save the updated product
+        $product->save();
+        return response()->json($product);
+
+    }
 }
